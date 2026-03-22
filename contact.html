@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0b0b0f; --surface: #111117; --border: #1e1e2a; --text: #e8e8f0; --muted: #6b6b80; --accent-green: #4ade80; --accent-blue: #60a5fa; }
+    :root { --bg: #0b0b0f; --surface: #111117; --border: #1e1e2a; --text: #e8e8f0; --muted: #6b6b80; --accent-green: #4ade80; --accent-blue: #60a5fa; --accent-purple: #c084fc; }
     body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; background: rgba(11,11,15,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
     .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--text); text-decoration: none; }
@@ -26,7 +26,7 @@
     .section-label:first-of-type { margin-top: 0; }
 
     /* ── APP ISSUE CARDS ── */
-    .app-issue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
+    .app-issue-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 8px; }
     .app-issue-card { border-radius: 10px; padding: 28px; border: 1px solid var(--border); background: var(--surface); display: flex; flex-direction: column; transition: border-color 0.25s, background 0.25s; }
     .app-issue-card.flowe:hover { border-color: rgba(96,165,250,0.4); background: #12121a; }
     .app-issue-card.fuelle:hover { border-color: rgba(74,222,128,0.4); background: #12121a; }
@@ -43,6 +43,10 @@
     .app-issue-card.fuelle .issue-btn { background: rgba(74,222,128,0.07); border-color: rgba(74,222,128,0.2); color: var(--accent-green); }
     .app-issue-card.fuelle .issue-btn:hover { background: rgba(74,222,128,0.15); border-color: rgba(74,222,128,0.4); }
     .issue-btn-ghost { background: transparent !important; border-color: var(--border) !important; color: var(--muted) !important; }
+    .app-issue-card.auris:hover { border-color: rgba(192,132,252,0.4); background: #12121a; }
+    .app-issue-card.auris .app-issue-name { color: var(--accent-purple); }
+    .app-issue-card.auris .issue-btn { background: rgba(192,132,252,0.07); border-color: rgba(192,132,252,0.2); color: var(--accent-purple); }
+    .app-issue-card.auris .issue-btn:hover { background: rgba(192,132,252,0.15); border-color: rgba(192,132,252,0.4); }
     .issue-btn-ghost:hover { border-color: var(--muted) !important; color: var(--text) !important; }
 
     /* ── CONTACT FORM ── */
@@ -92,6 +96,9 @@
     .footer-links a { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--text); }
 
+    @media (max-width: 1100px) and (min-width: 641px) {
+      .app-issue-grid { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 640px) {
       nav { padding: 16px 20px; }
       .container { padding: 120px 24px 80px; }
@@ -151,6 +158,23 @@
         </div>
       </div>
 
+      <div class="app-issue-card auris">
+        <div class="app-issue-icon">🎧</div>
+        <div class="app-issue-name">Auris</div>
+        <p class="app-issue-desc">Privacy-first audio enhancement. Report bugs, driver issues, or suggest headphone profiles and features.</p>
+        <div class="issue-btn-group">
+          <a class="issue-btn" href="https://github.com/thatspeedykid/Auris/issues/new?labels=bug" target="_blank" rel="noopener">
+            🐛 Report a Bug <span>↗ GitHub</span>
+          </a>
+          <a class="issue-btn" href="https://github.com/thatspeedykid/Auris/discussions/new" target="_blank" rel="noopener">
+            💡 Request a Feature <span>↗ Discussions</span>
+          </a>
+          <a class="issue-btn issue-btn-ghost" href="https://github.com/thatspeedykid/Auris/issues" target="_blank" rel="noopener">
+            View open issues <span>↗</span>
+          </a>
+        </div>
+      </div>
+
     </div>
 
     <!-- CONTACT FORM -->
@@ -182,6 +206,7 @@
             <option value="" disabled selected>What's this about?</option>
             <option value="Flowe — General Support">Flowe — General Support</option>
             <option value="Fuelle — General Support">Fuelle — General Support</option>
+            <option value="Auris — General Support">Auris — General Support</option>
             <option value="Privacy / Data Question">Privacy / Data Question</option>
             <option value="App Store Issue">App Store Issue</option>
             <option value="Security Concern">Security Concern</option>
@@ -197,7 +222,7 @@
 
         <button type="submit" class="submit-btn" id="submitBtn">Send Message →</button>
         <p class="form-note">
-          Sent directly to <a href="mailto:networkchasemedia@gmail.com">networkchasemedia@gmail.com</a> via <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a>. No data stored.
+          Sent directly to <a href="/cdn-cgi/l/email-protection#2f414a5b58405d444c474e5c4a424a4b464e6f48424e4643014c4042"><span class="__cf_email__" data-cfemail="402e2534372f322b23282133252d2524292100272d21292c6e232f2d">[email&#160;protected]</span></a> via <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a>. No data stored.
         </p>
 
       </form>
@@ -219,7 +244,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const form = document.getElementById('contactForm');
     const success = document.getElementById('formSuccess');
     const submitBtn = document.getElementById('submitBtn');
@@ -244,12 +269,4 @@
       try {
         const response = await fetch(form.action, {
           method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          form.style.display = 'none';
-          success.style.display = 'block';
-        } else {
-          throw new Error('Send failed'
+       

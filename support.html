@@ -97,7 +97,7 @@
       <a class="support-card" href="contact.html">
         <span class="support-icon">✉️</span>
         <div class="support-card-title">Contact &amp; Message Form</div>
-        <div class="support-card-desc">Send a message via our contact form — or email networkchasemedia@gmail.com directly for anything private or sensitive.</div>
+        <div class="support-card-desc">Send a message via our contact form — or email <span class="__cf_email__" data-cfemail="2b454e5f5c44594048434a584e464e4f424a6b4c464a424705484446">[email&#160;protected]</span> directly for anything private or sensitive.</div>
       </a>
       <a class="support-card" href="https://github.com/thatspeedykid" target="_blank" rel="noopener">
         <span class="support-icon">⭐</span>
@@ -181,6 +181,7 @@
             <option value="" disabled selected>What's this about?</option>
             <option value="Flowe — General Support">Flowe — General Support</option>
             <option value="Fuelle — General Support">Fuelle — General Support</option>
+            <option value="Auris — General Support">Auris — General Support</option>
             <option value="Privacy / Data Question">Privacy / Data Question</option>
             <option value="App Store Issue">App Store Issue</option>
             <option value="Security Concern">Security Concern</option>
@@ -193,13 +194,13 @@
           <textarea id="message" name="message" placeholder="Describe your question or issue..." required></textarea>
         </div>
         <button type="submit" class="submit-btn" id="submitBtn">Send Message →</button>
-        <p class="form-note">Sent to <a href="mailto:networkchasemedia@gmail.com">networkchasemedia@gmail.com</a> via <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a>. No data stored.</p>
+        <p class="form-note">Sent to <a href="/cdn-cgi/l/email-protection#244a4150534b564f474c4557414941404d45644349454d480a474b49"><span class="__cf_email__" data-cfemail="2e404b5a59415c454d464f5d4b434b4a474f6e49434f4742004d4143">[email&#160;protected]</span></a> via <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a>. No data stored.</p>
       </form>
     </div>
 
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const form = document.getElementById('contactForm');
     const success = document.getElementById('formSuccess');
     const submitBtn = document.getElementById('submitBtn');
@@ -218,16 +219,4 @@
       } catch(err) {
         submitBtn.textContent = 'Send Message →';
         submitBtn.disabled = false;
-        alert('Something went wrong. Please email networkchasemedia@gmail.com directly.');
-      }
-    });
-  </script>
-
-
-  <footer>
-    <span class="footer-logo">Privacy<span>Chase</span></span>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-      <a href="contact.html">C
+        al

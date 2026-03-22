@@ -59,7 +59,7 @@
   <div class="container">
     <p class="page-label">Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="last-updated">Last updated: March 2026 — applies to Flowe and Fuelle</p>
+    <p class="last-updated">Last updated: March 2026 — applies to Flowe, Fuelle, and Auris</p>
 
     <div class="tldr">
       <p class="tldr-label">The short version</p>
@@ -67,8 +67,8 @@
     </div>
 
     <h2>Who we are</h2>
-    <p>PrivacyChase is an independent, single-developer software studio. We make Flowe (personal finance) and Fuelle (meal planning &amp; nutrition tracking). Our apps are available on Windows, macOS, Linux, Android, and iOS.</p>
-    <p>Contact: <a href="mailto:networkchasemedia@gmail.com" style="color: var(--accent-green);">networkchasemedia@gmail.com</a></p>
+    <p>PrivacyChase is an independent, single-developer software studio. We make Flowe (personal finance), Fuelle (meal planning &amp; nutrition tracking), and Auris (audio enhancement). Our apps target Windows, macOS, Linux, Android, and iOS — availability varies by app.</p>
+    <p>Contact: <a href="/cdn-cgi/l/email-protection#b3ddd6c7c4dcc1d8d0dbd2c0d6ded6d7dad2f3d4ded2dadf9dd0dcde" style="color: var(--accent-green);"><span class="__cf_email__" data-cfemail="a9c7ccdddec6dbc2cac1c8daccc4cccdc0c8e9cec4c8c0c587cac6c4">[email&#160;protected]</span></a></p>
 
     <div class="divider"></div>
 
@@ -78,6 +78,7 @@
       <li>No name, email address, or account credentials are ever requested or stored.</li>
       <li>No financial data from Flowe leaves your device.</li>
       <li>No nutrition or meal data from Fuelle leaves your device.</li>
+      <li>No audio data, EQ settings, or profiles from Auris leave your device.</li>
       <li>No usage statistics, crash reports, or analytics are sent anywhere.</li>
       <li>No device identifiers, IP addresses, or location data are collected.</li>
       <li>No advertising SDKs or third-party tracking tools are included in any app.</li>
@@ -94,18 +95,29 @@
     <p>You are in full control of this file. You can back it up, move it, delete it, or share it however you like. We have no access to it.</p>
 
     <h2>The backup &amp; restore feature</h2>
-    <p>Both apps include a backup feature that encodes your data into a compact text string (using gzip + base64). This string is copied to your clipboard only when you explicitly tap "Copy Backup." It is never sent to any server. You can paste it wherever you choose — that is entirely under your control.</p>
+    <p>Flowe and Fuelle include a backup feature that encodes your data into a compact text string (using gzip + base64). This string is copied to your clipboard only when you explicitly tap "Copy Backup." It is never sent to any server. You can paste it wherever you choose — that is entirely under your control.</p>
     <p>When you use "Paste &amp; Restore," the app reads from your clipboard. Again, nothing is transmitted anywhere.</p>
+    <p>Auris stores all settings, EQ profiles, and headphone configurations locally in your app data directory. There is currently no backup/restore feature in Auris — your settings live in a local config file you can copy manually.</p>
 
     <h2>Network access</h2>
     <p><strong style="color: var(--text);">Flowe</strong> makes zero network requests. It is fully offline.</p>
     <p><strong style="color: var(--text);">Fuelle</strong> makes a single type of network request: searching the USDA FoodData Central database for food items when you perform a food search. This request goes directly to the USDA's public API. No personal data is included in this request — only the search term you type. No other network requests are made.</p>
+    <p><strong style="color: var(--text);">Auris</strong> makes zero network requests during normal operation. It includes one optional, user-initiated network call: checking GitHub Releases for a newer version of the app. This feature is <strong style="color: var(--text);">off by default</strong> and only runs when you explicitly trigger it. No personal data is sent — only a standard HTTPS request to the GitHub API. All audio processing (noise suppression, EQ, AI scene detection) runs entirely on your device via on-device models.</p>
 
     <h2>Children's privacy</h2>
     <p>Our apps do not collect any information from anyone, including children. We have no mechanism to do so. Our apps comply with COPPA and equivalent regulations by design — by collecting nothing at all.</p>
 
     <h2>Third-party services</h2>
-    <p>Our apps do not integrate any third-party analytics, advertising, crash reporting, or social login services. The only third-party service touched is the USDA FoodData Central API by Fuelle, as described above.</p>
+    <p>Our apps do not integrate any third-party analytics, advertising, crash reporting, or social login services.</p>
+    <p>Third-party services and components used:</p>
+    <ul>
+      <li><strong style="color: var(--text);">Fuelle</strong> uses the <a href="https://fdc.nal.usda.gov/" target="_blank" rel="noopener" style="color: var(--accent-green);">USDA FoodData Central</a> public API for food searches. Only your search term is sent — no personal data.</li>
+      <li><strong style="color: var(--text);">Auris</strong> uses on-device models from <a href="https://github.com/jaakkopasanen/AutoEq" target="_blank" rel="noopener" style="color: var(--accent-green);">AutoEQ</a> (headphone profiles), <a href="https://github.com/Rikorose/DeepFilterNet" target="_blank" rel="noopener" style="color: var(--accent-green);">DeepFilterNet 3</a> (noise suppression), and the <a href="https://github.com/fxsound2/fxsound-app" target="_blank" rel="noopener" style="color: var(--accent-green);">FxSound</a> DSP engine. All processing is local. None of these components transmit any data.</li>
+      <li><strong style="color: var(--text);">Auris</strong> may optionally contact the GitHub Releases API to check for updates, as described above.</li>
+    </ul>
+
+    <h2>Auris privacy audit log</h2>
+    <p>Auris includes a built-in privacy audit log that records every outbound system call the app makes. Under normal operation this log should always be empty. If it is not empty, that is a bug — please report it on <a href="https://github.com/thatspeedykid/Auris/issues" target="_blank" rel="noopener" style="color: var(--accent-green);">GitHub</a>.</p>
 
     <h2>This website</h2>
     <p>This website (privacychase.com) is hosted on GitHub Pages. GitHub may log standard web server data (IP addresses, browser user agents) as part of their hosting service. We do not use any analytics, tracking pixels, or cookies on this website. Please refer to <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener" style="color: var(--accent-green);">GitHub's Privacy Statement</a> for information on their data practices.</p>
@@ -118,5 +130,4 @@
     <p>If our data practices ever change (for example, if a future version of an app adds optional cloud sync), we will update this policy and note the date at the top. We will never collect data without clearly disclosing it here first.</p>
 
     <h2>Contact</h2>
-    <p>Questions about this policy? Reach us at <a href="mailto:networkchasemedia@gmail.com" style="color: var(--accent-green);">networkchasemedia@gmail.com</a>.</p>
-  </div
+    <p>Questions about
