@@ -30,14 +30,15 @@
     .app-issue-card { border-radius: 10px; padding: 28px; border: 1px solid var(--border); background: var(--surface); display: flex; flex-direction: column; transition: border-color 0.25s, background 0.25s; }
     .app-issue-card.flowe:hover { border-color: rgba(96,165,250,0.4); background: #12121a; }
     .app-issue-card.fuelle:hover { border-color: rgba(74,222,128,0.4); background: #12121a; }
-    .app-issue-icon { font-size: 1.8rem; margin-bottom: 12px; }
-    .app-issue-name { font-family: 'DM Serif Display', serif; font-size: 1.4rem; letter-spacing: -0.02em; margin-bottom: 8px; line-height: 1; }
+    .app-issue-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .app-issue-name { font-family: 'DM Serif Display', serif; font-size: 1.3rem; letter-spacing: -0.02em; margin-bottom: 8px; line-height: 1; }
     .app-issue-card.flowe .app-issue-name { color: var(--accent-blue); }
     .app-issue-card.fuelle .app-issue-name { color: var(--accent-green); }
-    .app-issue-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin-bottom: 20px; flex: 1; }
+    .app-issue-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 18px; flex: 1; }
     .issue-btn-group { display: flex; flex-direction: column; gap: 8px; }
-    .issue-btn { display: flex; align-items: center; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.05em; text-decoration: none; padding: 10px 14px; border-radius: 6px; border: 1px solid; transition: all 0.2s; }
-    .issue-btn span { opacity: 0.45; font-size: 0.62rem; }
+    .issue-btn { display: flex; align-items: center; font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.04em; text-decoration: none; padding: 10px 12px; border-radius: 6px; border: 1px solid; transition: all 0.2s; }
+    .issue-btn-label { flex: 1; }
+    .issue-btn-tag { opacity: 0.4; font-size: 0.6rem; flex-shrink: 0; margin-left: 4px; }
     .app-issue-card.flowe .issue-btn { background: rgba(96,165,250,0.07); border-color: rgba(96,165,250,0.2); color: var(--accent-blue); }
     .app-issue-card.flowe .issue-btn:hover { background: rgba(96,165,250,0.15); border-color: rgba(96,165,250,0.4); }
     .app-issue-card.fuelle .issue-btn { background: rgba(74,222,128,0.07); border-color: rgba(74,222,128,0.2); color: var(--accent-green); }
@@ -96,7 +97,7 @@
     .footer-links a { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--text); }
 
-    @media (max-width: 1100px) and (min-width: 641px) {
+    @media (max-width: 900px) and (min-width: 641px) {
       .app-issue-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 640px) {
@@ -130,13 +131,13 @@
         <p class="app-issue-desc">Personal finance &amp; budgeting. Report crashes, unexpected behavior, or suggest improvements.</p>
         <div class="issue-btn-group">
           <a class="issue-btn" href="https://github.com/thatspeedykid/flowe/issues/new?labels=bug" target="_blank" rel="noopener">
-            🐛 Report a Bug <span>↗ GitHub</span>
+            <span class="issue-btn-label">🐛 Report a Bug </span><span class="issue-btn-tag">↗ GitHub</span>
           </a>
           <a class="issue-btn" href="https://github.com/thatspeedykid/flowe/issues/new?labels=enhancement" target="_blank" rel="noopener">
-            💡 Request a Feature <span>↗ GitHub</span>
+            <span class="issue-btn-label">💡 Request a Feature </span><span class="issue-btn-tag">↗ GitHub</span>
           </a>
           <a class="issue-btn issue-btn-ghost" href="https://github.com/thatspeedykid/flowe/issues" target="_blank" rel="noopener">
-            View open issues <span>↗</span>
+            <span class="issue-btn-label">View open issues</span><span class="issue-btn-tag">↗</span>
           </a>
         </div>
       </div>
@@ -147,13 +148,13 @@
         <p class="app-issue-desc">Meal planner &amp; nutrition tracker. Report crashes, food data issues, or suggest new features.</p>
         <div class="issue-btn-group">
           <a class="issue-btn" href="https://github.com/thatspeedykid/Fuelle/issues/new?labels=bug" target="_blank" rel="noopener">
-            🐛 Report a Bug <span>↗ GitHub</span>
+            <span class="issue-btn-label">🐛 Report a Bug </span><span class="issue-btn-tag">↗ GitHub</span>
           </a>
           <a class="issue-btn" href="https://github.com/thatspeedykid/Fuelle/issues/new?labels=enhancement" target="_blank" rel="noopener">
-            💡 Request a Feature <span>↗ GitHub</span>
+            <span class="issue-btn-label">💡 Request a Feature </span><span class="issue-btn-tag">↗ GitHub</span>
           </a>
           <a class="issue-btn issue-btn-ghost" href="https://github.com/thatspeedykid/Fuelle/issues" target="_blank" rel="noopener">
-            View open issues <span>↗</span>
+            <span class="issue-btn-label">View open issues</span><span class="issue-btn-tag">↗</span>
           </a>
         </div>
       </div>
@@ -164,13 +165,13 @@
         <p class="app-issue-desc">Privacy-first audio enhancement. Report bugs, driver issues, or suggest headphone profiles and features.</p>
         <div class="issue-btn-group">
           <a class="issue-btn" href="https://github.com/thatspeedykid/Auris/issues/new?labels=bug" target="_blank" rel="noopener">
-            🐛 Report a Bug <span>↗ GitHub</span>
+            <span class="issue-btn-label">🐛 Report a Bug </span><span class="issue-btn-tag">↗ GitHub</span>
           </a>
           <a class="issue-btn" href="https://github.com/thatspeedykid/Auris/discussions/new" target="_blank" rel="noopener">
-            💡 Request a Feature <span>↗ Discussions</span>
+            <span class="issue-btn-label">💡 Request a Feature </span><span class="issue-btn-tag">↗ Discussions</span>
           </a>
           <a class="issue-btn issue-btn-ghost" href="https://github.com/thatspeedykid/Auris/issues" target="_blank" rel="noopener">
-            View open issues <span>↗</span>
+            <span class="issue-btn-label">View open issues</span><span class="issue-btn-tag">↗</span>
           </a>
         </div>
       </div>
