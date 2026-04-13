@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apps — PrivacyChase</title>
+<meta name="description" content="Privacy-first apps from PrivacyChase. Flowe, Fuelle, and Auris — no accounts, no servers, no telemetry." />
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0b0b0f; --surface: #111117; --border: #1e1e2a;
+  --text: #e8e8f0; --muted: #6b6b80; --accent: #4ade80;
+  --blue: #60a5fa; --amber: #fbbf24; --rose: #f87171; --purple: #c084fc;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'DM Sans', sans-serif; font-weight: 300;
+  line-height: 1.6; overflow-x: hidden;
+}
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.3;
+}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 48px; display: flex; align-items: center; justify-content: space-between;
+  background: rgba(11,11,15,0.85); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.2rem; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-cta { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; background: var(--accent); color: #0b0b0f; font-weight: 500; padding: 8px 16px; border-radius: 5px; text-decoration: none; transition: all 0.2s; }
+.nav-cta:hover { background: #6ee79a; }
+
+.page-header {
+  padding: 140px 48px 60px; max-width: 1100px; margin: 0 auto;
+  position: relative; z-index: 1;
+  opacity: 0; animation: fadeUp 0.7s ease forwards 0.1s;
+}
+.page-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.page-title { font-family: 'DM Serif Display', serif; font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 20px; }
+.page-title em { font-style: italic; color: var(--accent); }
+.page-sub { font-size: 1.05rem; color: var(--muted); max-width: 500px; }
+
+.divider { width: 100%; max-width: 1100px; margin: 0 auto; height: 1px; background: var(--border); }
+
+.apps { max-width: 100%; padding: 0; position: relative; z-index: 1; }
+.apps-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
+
+.app-card {
+  background: var(--surface); padding: 52px 48px;
+  position: relative; overflow: hidden; transition: background 0.3s; z-index: 1;
+}
+.app-card::before {
+  content: ''; position: absolute; inset: 0; opacity: 0;
+  transition: opacity 0.4s; pointer-events: none; z-index: 0;
+}
+.app-card.flowe::before { background: radial-gradient(ellipse at top left, rgba(96,165,250,0.08) 0%, transparent 60%); }
+.app-card.fuelle::before { background: radial-gradient(ellipse at top right, rgba(74,222,128,0.08) 0%, transparent 60%); }
+.app-card.auris::before { background: radial-gradient(ellipse at top left, rgba(192,132,252,0.08) 0%, transparent 60%); }
+.app-card:hover::before { opacity: 1; }
+.app-card:hover { background: #13131a; }
+
+.app-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 999px; margin-bottom: 32px;
+  background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25); color: var(--amber);
+}
+.app-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: blink 2s ease-in-out infinite; }
+.app-icon { font-size: 3rem; margin-bottom: 20px; display: block; position: relative; z-index: 1; }
+.app-name { font-family: 'DM Serif Display', serif; font-size: 2.4rem; letter-spacing: -0.03em; margin-bottom: 8px; line-height: 1; position: relative; z-index: 1; }
+.app-card.flowe .app-name { color: var(--blue); }
+.app-card.fuelle .app-name { color: var(--accent); }
+.app-card.auris .app-name { color: var(--purple); }
+.app-tagline { font-size: 0.9rem; color: var(--muted); margin-bottom: 32px; font-style: italic; position: relative; z-index: 1; }
+.app-desc { font-size: 0.95rem; color: #9898a8; line-height: 1.7; margin-bottom: 36px; position: relative; z-index: 1; }
+.feature-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; position: relative; z-index: 1; }
+.feature-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.88rem; color: #9898a8; }
+.feature-list li::before { content: '→'; font-family: 'DM Mono', monospace; font-size: 0.75rem; flex-shrink: 0; margin-top: 2px; }
+.app-card.flowe .feature-list li::before { color: var(--blue); }
+.app-card.fuelle .feature-list li::before { color: var(--accent); }
+.app-card.auris .feature-list li::before { color: var(--purple); }
+.platforms { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; position: relative; z-index: 1; }
+.platform-tag { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; padding: 4px 10px; border: 1px solid var(--border); border-radius: 4px; color: var(--muted); }
+.app-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.08em;
+  text-decoration: none; padding: 12px 20px; border-radius: 6px; transition: all 0.2s;
+  position: relative; z-index: 2;
+}
+.app-card.flowe .app-link { background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.3); color: var(--blue); }
+.app-card.fuelle .app-link { background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.3); color: var(--accent); }
+.app-card.auris .app-link { background: rgba(192,132,252,0.1); border: 1px solid rgba(192,132,252,0.3); color: var(--purple); }
+.app-card.flowe .app-link:hover { background: rgba(96,165,250,0.18); }
+.app-card.fuelle .app-link:hover { background: rgba(74,222,128,0.18); }
+.app-card.auris .app-link:hover { background: rgba(192,132,252,0.18); }
+
+footer {
+  border-top: 1px solid var(--border); padding: 48px;
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 1;
+}
+.footer-logo { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--muted); }
+.footer-logo span { color: var(--accent); }
+.footer-copy { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; color: var(--muted); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .page-header { padding: 100px 24px 40px; }
+  .apps-inner { grid-template-columns: 1fr; }
+  .app-card { padding: 36px 28px; }
+  footer { flex-direction: column; gap: 20px; text-align: center; padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Privacy<span>Chase</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#social">Social</a></li>
+    <li><a href="apps.html" class="active">Apps</a></li>
+    <li><a href="index.html#principles">Philosophy</a></li>
+    <li><a href="https://github.com/thatspeedykid" target="_blank" rel="noopener">GitHub ↗</a></li>
+  </ul>
+  <a class="nav-cta" href="social/index.html">Try Social →</a>
+</nav>
+
+<div class="page-header">
+  <p class="page-label">Our Apps</p>
+  <h1 class="page-title">Three apps.<br><em>One promise.</em></h1>
+  <p class="page-sub">Built by one developer who got tired of apps that treat your personal data like a product.</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="apps">
+  <div class="apps-inner">
+    <div class="app-card flowe" id="flowe">
+      <div class="app-badge"><span class="dot"></span> Available Now — Coming to App Stores</div>
+      <span class="app-icon">💸</span>
+      <h2 class="app-name">Flowe</h2>
+      <p class="app-tagline">The file-first budgeting app.</p>
+      <p class="app-desc">Most budget apps want your email, your bank login, and a monthly fee. Flowe doesn't. Your data lives in a single file on your device.</p>
+      <ul class="feature-list">
+        <li>Monthly budget with income & expense tracking</li>
+        <li>Debt snowball simulator with payoff dates</li>
+        <li>Net worth snapshots with delta tracking</li>
+        <li>Event budgets & split calculator</li>
+        <li>Export to CSV or PDF — zero lock-in</li>
+        <li>One-tap copy backup — paste it anywhere to restore</li>
+      </ul>
+      <div class="platforms">
+        <span class="platform-tag">Windows</span><span class="platform-tag">Linux</span>
+        <span class="platform-tag">macOS</span><span class="platform-tag">Android</span><span class="platform-tag">iOS</span>
+      </div>
+      <a class="app-link" href="https://github.com/thatspeedykid/flowe" target="_blank" rel="noopener">View on GitHub ↗</a>
+    </div>
+
+    <div class="app-card fuelle" id="fuelle">
+      <div class="app-badge"><span class="dot"></span> In Development — Coming Soon</div>
+      <span class="app-icon">🥗</span>
+      <h2 class="app-name">Fuelle</h2>
+      <p class="app-tagline">Privacy-first meal planner & nutrition tracker.</p>
+      <p class="app-desc">Log your meals, track calories and macros using the USDA food database, and keep your full history — all without an account or an internet connection.</p>
+      <ul class="feature-list">
+        <li>Meal logging — Breakfast, Lunch, Dinner, Snacks</li>
+        <li>USDA FoodData Central search — government-verified data</li>
+        <li>Daily & weekly nutrition summaries</li>
+        <li>Custom calorie & macro goals</li>
+        <li>Rolling history with 7-day averages</li>
+        <li>One-line encrypted backup code, any device</li>
+      </ul>
+      <div class="platforms">
+        <span class="platform-tag">Windows</span><span class="platform-tag">Linux</span>
+        <span class="platform-tag">macOS</span><span class="platform-tag">Android</span><span class="platform-tag">iOS</span>
+      </div>
+      <a class="app-link" href="https://github.com/thatspeedykid/Fuelle" target="_blank" rel="noopener">View on GitHub ↗</a>
+    </div>
+
+    <div class="app-card auris" id="auris">
+      <div class="app-badge"><span class="dot"></span> Alpha — In Development</div>
+      <span class="app-icon">🎧</span>
+      <h2 class="app-name">Auris</h2>
+      <p class="app-tagline">Privacy-first audio enhancement.</p>
+      <p class="app-desc">Your headphones, everywhere. Auris makes your headphones sound as good on Windows as they do on the manufacturer's app — with zero telemetry.</p>
+      <ul class="feature-list">
+        <li>Headphone profiles — AutoEQ database, 1,400+ devices</li>
+        <li>Per-app audio profiles — Spotify, Discord, games</li>
+        <li>On-device noise suppression via DeepFilterNet 3</li>
+        <li>AI scene detection — auto-switches preset</li>
+        <li>Built-in privacy audit log — should always be empty</li>
+        <li>Zero network calls during normal operation</li>
+      </ul>
+      <div class="platforms">
+        <span class="platform-tag">Windows 10/11</span>
+        <span class="platform-tag">macOS (planned)</span><span class="platform-tag">Linux (planned)</span>
+      </div>
+      <a class="app-link" href="https://github.com/thatspeedykid/Auris" target="_blank" rel="noopener">View on GitHub ↗</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">Privacy<span>Chase</span></span>
+  <span class="footer-copy">© 2026 PrivacyChase — MIT License</span>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+    <a href="support.html">Support</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://github.com/thatspeedykid" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</footer>
+</body>
+</html>
